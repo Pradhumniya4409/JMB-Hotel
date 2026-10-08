@@ -157,7 +157,14 @@ export default function Booking() {
               <div className="grid sm:grid-cols-3 gap-5">
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">City *</label>
-                  <select className={inputClass('city')} value={form.city} onChange={(e) => update('city', e.target.value)}>
+                  <select
+                    id="city"
+                    name="city"
+                    className={inputClass('city')}
+                    value={form.city}
+                    onChange={(e) => update('city', e.target.value)}
+                    required
+                  >
                     <option value="">Select city</option>
                     {cities.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
                   </select>
@@ -165,14 +172,29 @@ export default function Booking() {
                 </div>
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Area</label>
-                  <select className={inputClass('area')} value={form.area} onChange={(e) => update('area', e.target.value)} disabled={!form.city}>
+                  <select
+                    id="area"
+                    name="area"
+                    className={inputClass('area')}
+                    value={form.area}
+                    onChange={(e) => update('area', e.target.value)}
+                    disabled={!form.city}
+                  >
                     <option value="">Any area</option>
                     {areas.map((a) => <option key={a.slug} value={a.slug}>{a.name}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Hotel *</label>
-                  <select className={inputClass('hotel')} value={form.hotel} onChange={(e) => update('hotel', e.target.value)} disabled={!form.city}>
+                  <select
+                    id="hotel"
+                    name="hotel"
+                    className={inputClass('hotel')}
+                    value={form.hotel}
+                    onChange={(e) => update('hotel', e.target.value)}
+                    disabled={!form.city}
+                    required
+                  >
                     <option value="">Select hotel</option>
                     {hotelOptions.map((h) => <option key={h.slug} value={h.slug}>{h.name}</option>)}
                   </select>
@@ -186,21 +208,53 @@ export default function Booking() {
               <div className="grid sm:grid-cols-4 gap-5">
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Check-in *</label>
-                  <input type="date" className={inputClass('checkIn')} value={form.checkIn} onChange={(e) => update('checkIn', e.target.value)} />
+                  <input
+                    id="checkIn"
+                    name="checkIn"
+                    type="date"
+                    className={inputClass('checkIn')}
+                    value={form.checkIn}
+                    onChange={(e) => update('checkIn', e.target.value)}
+                    required
+                  />
                   {errors.checkIn && <p className="text-xs text-red-500 mt-1">{errors.checkIn}</p>}
                 </div>
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Check-out *</label>
-                  <input type="date" className={inputClass('checkOut')} value={form.checkOut} onChange={(e) => update('checkOut', e.target.value)} />
+                  <input
+                    id="checkOut"
+                    name="checkOut"
+                    type="date"
+                    className={inputClass('checkOut')}
+                    value={form.checkOut}
+                    onChange={(e) => update('checkOut', e.target.value)}
+                    required
+                  />
                   {errors.checkOut && <p className="text-xs text-red-500 mt-1">{errors.checkOut}</p>}
                 </div>
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Guests</label>
-                  <input type="number" min="1" className={inputClass('guests')} value={form.guests} onChange={(e) => update('guests', e.target.value)} />
+                  <input
+                    id="guests"
+                    name="guests"
+                    type="number"
+                    min="1"
+                    className={inputClass('guests')}
+                    value={form.guests}
+                    onChange={(e) => update('guests', e.target.value)}
+                  />
                 </div>
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Rooms</label>
-                  <input type="number" min="1" className={inputClass('rooms')} value={form.rooms} onChange={(e) => update('rooms', e.target.value)} />
+                  <input
+                    id="rooms"
+                    name="rooms"
+                    type="number"
+                    min="1"
+                    className={inputClass('rooms')}
+                    value={form.rooms}
+                    onChange={(e) => update('rooms', e.target.value)}
+                  />
                 </div>
               </div>
             </div>
@@ -210,22 +264,53 @@ export default function Booking() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Full Name *</label>
-                  <input type="text" className={inputClass('name')} value={form.name} onChange={(e) => update('name', e.target.value)} />
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    className={inputClass('name')}
+                    value={form.name}
+                    onChange={(e) => update('name', e.target.value)}
+                    required
+                  />
                   {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
                 </div>
                 <div>
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Phone *</label>
-                  <input type="tel" className={inputClass('phone')} value={form.phone} onChange={(e) => update('phone', e.target.value)} />
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    className={inputClass('phone')}
+                    value={form.phone}
+                    onChange={(e) => update('phone', e.target.value)}
+                    required
+                  />
                   {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
                 </div>
                 <div className="sm:col-span-2">
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Email</label>
-                  <input type="email" className={inputClass('email')} value={form.email} onChange={(e) => update('email', e.target.value)} />
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    className={inputClass('email')}
+                    value={form.email}
+                    onChange={(e) => update('email', e.target.value)}
+                  />
                   {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
                 <div className="sm:col-span-2">
                   <label className="text-xs tracking-wide text-charcoal/50 mb-1.5 block">Message</label>
-                  <textarea rows={4} className={inputClass('message')} value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="Any special requests?" />
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className={inputClass('message')}
+                    value={form.message}
+                    onChange={(e) => update('message', e.target.value)}
+                    placeholder="Any special requests?"
+                  />
                 </div>
               </div>
             </div>
